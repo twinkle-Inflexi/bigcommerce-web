@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script>
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script>
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+        
+        {{getFontsCollection font-display='block'}}
+        
+        <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+
+        {{{stylesheet '/assets/css/theme.css'}}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'zoomSize' theme_settings.zoom_size}}
+        {{~inject 'productSize' theme_settings.product_size}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
+        {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
+        {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+        <!--@Ts code start -->
+        <style>
+            body{
+                font-family: 'GOTHIC' !important;
+            }
+          .top-nav {
+                background-color: #db4961;
+                color: #fff;
+                padding: 1px;
+              }
+            .top-nav p{
+                margin-top:7px;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                font-size: 16px;
+            }
+    
+
+        </style>
+        <!--@Ts code end-->
+    </head>
+    <body>
+        <!--@Ts code start -->
+        <div class="top-nav">
+            <p>20% Off Sitewide from 13<sup>th</sup> October to 21<sup>st</sup> October. Use coupon code  <strong>flash20</strong>    at checkout
+            </p>
+        </div>
+        
+        <!--@Ts code end-->
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script>
+            {{!-- Exported in app.js --}}
+            function onThemeBundleMain() {
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+
+                function browserSupportsFormData() {
+                    return typeof FormData !== 'undefined' 
+                        && !!FormData.prototype.keys;
+                }
+                function loadFormDataPolyfillScript(src) {
+                    var formDataPolyfillScript = document.createElement('script');
+                    formDataPolyfillScript.src = src;
+                    formDataPolyfillScript.onerror = function () {
+                        console.error('Failed to load formData polyfill script ' + src);
+                    };
+                    document.body.appendChild(formDataPolyfillScript);
+                }
+
+                if (!browserSupportsFormData()) {
+                    loadFormDataPolyfillScript('{{cdn 'assets/dist/theme-bundle.polyfill_form_data.js'}}');
+                }
+            }
+        </script>
+        <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
+        
+        
+        <!--As per color print the color name concat with title-->
+    <!--@TS title change accd to color Start-->
+    <script>
+        $(document).ready(function() {
+            // Get the initial product title
+            var initialTitle = $('.productView-title').text();
+            
+            
+            // Initialize the product title with "White" concatenated
+            $('.productView-title').text(initialTitle + ' | White');
+
+        
+            // Add a change event listener to all color swatch inputs
+            $('input.form-radio').on('change', function() {
+                // Get the selected color value
+                var val = $(this).val(); // Assuming val is the value you want to compare
+                console.log("selected value"+$(this).val());
+                // Reload the page to reset the color selection
+                // window.location.reload();
+        
+                // Get the color name based on the value
+                var selectedColor = getColorName(val);
+        
+                // Update the product title with the selected color
+                $('.productView-title').text(initialTitle + ' | ' + selectedColor);
+            });
+        
+            // Function to get color name based on value
+            function getColorName(value) {
+                switch (value) {
+                    case '98':
+                        return 'White';
+                    case '99':
+                        return 'Navy Blue';
+                    case '100':
+                        return 'Charcoal';
+                    case '101':
+                        return 'Taupe';
+                    case '102':
+                        return 'Grey Mist';
+                    case '103':
+                        return 'Sky Blue';
+                    case '104':
+                        return 'Lilac Mist';
+                    case '105':
+                        return 'Ivory';
+                    case '106':
+                        return 'Minty';
+                    case '107':
+                        return 'Burnt Ochre';
+                    case '108':
+                        return 'Chocolate';
+                    default:
+                        return 'White'; // Default to an empty string if none of the values match
+                }
+            }
+        });
+    </script>
+    <!--@TS title change accd to color End-->
+
+
+
+
+        {{{footer.scripts}}}
+    </body>
+</html>
