@@ -1,0 +1,68 @@
+body{
+    /* font-family: 'GOTHIC' !important; */
+    font-family: "Source Sans Pro", sans-serif !important;
+}
+/* top nav css start  */
+.top-nav {
+    background-color: #db4961;
+    color: #fff;
+    padding: 1px;
+  }
+.top-nav p{
+    margin-top:7px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 16px;
+}
+/* top nav css end  */
+/* header logo css start  */
+.header-logo-image-container {
+    min-height: 40px !important;
+}
+.header-logo{
+margin: 32px auto 22px !important;
+}
+/* header logo css end  */
+/* navbar css start  */
+.navPages-container{
+    background: #f0f8f8 !important;
+}
+/* navbar css end  */
+/* banner css start  */
+.css-a3pymm{
+    min-height: 314px !important;
+}
+.css-mwwowe{
+    height: 51px !important;
+    width: 35px !important;
+    background: rgb(42 84 83) !important;
+}
+.css-1m3by0h{
+    color: rgb(255 255 255) !important;
+}
+.css-1m3by0h > path {
+    fill: rgb(255 255 255) !important;
+}
+/* banner css end  */
+/* heading: "caring for you and the planet" css start  */
+div #sd-image-7bb59237-9169-4a7f-8f80-1297d3c70971{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.sd-simple-text-5b4afc99-23d4-4d10-a799-fedec6048384{
+    margin-bottom: 40px !important;
+}
+[data-sub-layout-container="6c1b8d9e-f095-4c5a-8020-cc135bdbf6af"]{
+    margin-top: 40px !important;
+}
+[data-sub-layout-container="07636417-f140-47ae-9bf8-acd7880f1a3c"]{
+    margin-top: 40px !important;
+}
+/* heading: "caring for you and the planet" css end  */
+
+/* sale page css start  */
+
+/* sale page css end  */
+
+
+

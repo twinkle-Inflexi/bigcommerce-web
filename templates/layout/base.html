@@ -9,6 +9,7 @@
 
         <link href="{{ head.favicon }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
 
         <script>
             {{!-- Change document class from no-js to js so we can detect this in css --}}
@@ -31,7 +32,7 @@
         <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
 
         {{{stylesheet '/assets/css/theme.css'}}}
-
+       
         {{{head.scripts}}}
 
         {{~inject 'zoomSize' theme_settings.zoom_size}}
@@ -47,26 +48,7 @@
         {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
         {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
-        <!--@Ts code start -->
-        <style>
-            body{
-                font-family: 'GOTHIC' !important;
-            }
-          .top-nav {
-                background-color: #db4961;
-                color: #fff;
-                padding: 1px;
-              }
-            .top-nav p{
-                margin-top:7px;
-                margin-bottom: 0.5rem;
-                text-align: center;
-                font-size: 16px;
-            }
-    
-
-        </style>
-        <!--@Ts code end-->
+        
     </head>
     <body>
         <!--@Ts code start -->
